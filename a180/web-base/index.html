@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> WebBase from QA Ninja</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1> Cadstro de alunos</h1>
+
+        <form>
+            <label for="nomeCompleto">Nome Completo</label>
+            <input type="text" name="nomeCompleto" id="nome">
+
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email">
+
+            <label for="nota">Nota</label>
+            <input type="text" name="nota" id="nota">
+
+            <input type="button" name="btnCadastrar" id="btnCadastrar" value="Cadastrar">
+        </form>
+
+        <div>
+            <table>
+                <thead>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Nota</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dieferson Cruz</td>
+                        <td>dief@gmail.com</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Leomar Cruz</td>
+                        <td>leo@gmail.com</td>
+                        <td>10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var app =  new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>
