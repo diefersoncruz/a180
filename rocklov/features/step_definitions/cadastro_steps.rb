@@ -3,9 +3,15 @@ Dado('que acesso a página de cadastro') do
 end
   
 Quando('submeto o meu cadastro completo') do
-    pending # Write code here that turns the phrase above into concrete actions
+    find("#fullName").set "Dieferson Cruz"    
+    find("#email").set Faker::Internet.free_email  
+    find("#password").set "1234"    
+
+    #Clica no botão cadastrar
+    click_button "Cadastrar"
 end
   
 Então('sou redirecionado para o Dashboard') do
-    pending # Write code here that turns the phrase above into concrete actions
+    # Valida se a pagina com o elemento dashboard foi encontrado
+    expect(page).to have_css ".dashboard"
 end
