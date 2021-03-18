@@ -2,52 +2,24 @@ Dado('que acesso a página de cadastro') do
     visit "http://rocklov-web:3000/signup"
 end
   
-Quando('submeto o meu cadastro completo') do
-    MongoDB.new.remove_user("dief@bol.com")
+Quando('submeto o seguinte formulário de cadastro:') do |table|
+    # table is a Cucumber::MultilineArgument::DataTable
+    user = table.hashes.first
 
-    find("#fullName").set "Dieferson Cruz"    
-    find("#email").set "dief@bol.com"  
-    find("#password").set "1234"    
+    MongoDB.new.remove_user(user[:email])
+
+    find("#fullName").set user[:nome]    
+    find("#email").set user[:email]  
+    find("#password").set user[:senha]    
 
     #Clica no botão cadastrar
     click_button "Cadastrar"
-end
+end  
   
 Então('sou redirecionado para o Dashboard') do
     # Valida se a pagina com o elemento dashboard foi encontrado
     expect(page).to have_css ".dashboard"
 end
-
-Quando('submeto o meu cadastro sem o nome') do
-    find("#email").set "dief@bol.com"
-    find("#password").set "1234"    
-
-    #Clica no botão cadastrar
-    click_button "Cadastrar"
-end
-
-Quando('submeto o meu cadastro sem o email') do
-    find("#fullName").set "Dieferson Cruz"    
-    find("#password").set "1234"    
-
-    #Clica no botão cadastrar
-    click_button "Cadastrar"
-end
-
-Quando('submeto o meu cadastro com email incorreto') do
-    find("#fullName").set "Dieferson Cruz"    
-    find("#email").set "teste#teste.com.br" 
-    find("#password").set "1234"    
-
-    #Clica no botão cadastrar
-    click_button "Cadastrar"end
-
-Quando('submeto o meu cadastro sem a senha') do
-    find("#fullName").set "Dieferson Cruz"    
-    find("#email").set Faker::Internet.free_email  
-
-    #Clica no botão cadastrar
-    click_button "Cadastrar"end
 
 Então('vejo a mensagem de alerta: {string}') do |expect_alert|
     alert = find(".alert-dark")
