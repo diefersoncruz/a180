@@ -1,15 +1,14 @@
+class LoginPage
+  # Herança da classe do capybara
+  include Capybara::DSL
 
-class LoginPage 
-    # Herança da classe do capybara
-    include Capybara::DSL
-      
-    def open 
-        visit "/"
-    end
+  def open
+    visit "/"
+  end
 
-    def with(email, password) 
-        find("input[placeholder='Seu email']").set email
-        find("input[type=password]").set password
-        click_button "Entrar"
-    end 
-end 
+  def with(email, password)
+    find("input[placeholder='Seu email']").set email
+    find("input[type=password]").set password
+    click_button "Entrar"
+  end
+end
