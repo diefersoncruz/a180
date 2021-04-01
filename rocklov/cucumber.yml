@@ -1,7 +1,11 @@
 --- 
-default: --publish-quiet -p bdd
+default: --publish-quiet -p allure -p bdd
 
 # Formato de execução do cucumber com formato padrão do cucumber
 bdd: -f pretty
 # Formato de execução do cucumber com pontos de progresso
 dots: -f progress
+# Salva o resultado em HTML
+html: -f html -o logs/report.html
+# Configura o Allure
+allure: --format AllureCucumber::CucumberFormatter --out=logs
