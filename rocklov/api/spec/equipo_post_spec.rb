@@ -6,19 +6,35 @@ describe "POST /equipos" do
   end
   context "novo equipo" do
     before(:all) do
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "Kramer.jpg"), "rb")
-
       payload = {
-        thumbnail: thumbnail,
+        thumbnail: Helpers::get_thumb("Kramer.jpg"),
         name: "Kramer Eddie Van Halen",
         category: "Cordas",
         price: 299,
       }
 
+      MongoDB.new.remove_equipo(payload[:name], @user_id)
+
       @result = Equipos.new.create(payload, @user_id)
     end
     it "deve retornar 200" do
       expect(@result.code).to eql 200
+    end
+  end
+
+  context "nao autorizado" do
+    before(:all) do
+      payload = {
+        thumbnail: Helpers::get_thumb("baixo.jpg"),
+        name: "Contrabaixo",
+        category: "Cordas",
+        price: 50,
+      }
+
+      @result = Equipos.new.create(payload, nil)
+    end
+    it "deve retornar 401" do
+      expect(@result.code).to eql 401
     end
   end
 end
