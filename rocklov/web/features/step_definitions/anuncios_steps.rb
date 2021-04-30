@@ -3,6 +3,8 @@ Dado("Login com {string} e {string}") do |email, password|
 
   @login_page.open
   @login_page.with(email, password)
+  # Valida se a pagina com o elemento dashboard foi encontrado
+  expect(@dash_page.on_dash?).to be true
 end
 
 Dado("que acesso o formulario de cadastro de anúncios") do
@@ -26,4 +28,32 @@ end
 
 Então("deve conter a mensagem de alerta: {string}") do |expect_alert|
   expect(@alert.dark).to have_text expect_alert
+end
+
+Dado("que eu tenho o seguinte anúncio indesejado:") do |table|
+  user_id = page.execute_script("return localStorage.getItem('user')")
+  log user_id
+
+  thumbnail = File.open(File.join(Dir.pwd, "features/support/fixtures/images", table.rows_hash[:thumb]), "rb")
+
+  equipo = {
+    thumbnail: thumbnail,
+    name: table.rows_hash[:nome],
+    category: table.rows_hash[:categoria],
+    price: table.rows_hash[:preco],
+  }
+
+  EquiposService.new.create(equipo, user_id)
+end
+
+Quando("eu solicito a exlusão desse anúncio") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Quando("confirmo a exclusão") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Então("não devo ver esse anúncio no meu Dashboard") do
+  pending # Write code here that turns the phrase above into concrete actions
 end

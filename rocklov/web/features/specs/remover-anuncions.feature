@@ -1,13 +1,17 @@
-#Language: pt
+#language: pt
 
 Funcionalidade: Remover Anúncios
     Sendo um anúnciante que possui um equipamento indesejado
     Quero poder remover esse anúncio
     Para que eu possa manter o meu Dashboard atualizado
 
+    Contexto: Login
+        * Login com "spider@gmail.com" e "1234"
+
+    @remover_anuncio
     Cenario: Remover um anúncio
 
-        Dado que eu tenho o seguinte anúncio indesejado
+        Dado que eu tenho o seguinte anúncio indesejado:
             | thumb     | telecaster.jpg |
             | nome      | Telecaster     |
             | categoria | Cordas         |
@@ -18,7 +22,7 @@ Funcionalidade: Remover Anúncios
 
     Cenario: Desistir exclusão
 
-        Dado que eu tenho o seguinte anúncio indesejado
+        Dado que eu tenho o seguinte anúncio indesejado:
             | thumb     | telecaster.jpg |
             | nome      | Telecaster     |
             | categoria | Cordas         |

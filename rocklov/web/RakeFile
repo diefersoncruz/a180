@@ -14,7 +14,9 @@ task :local_seeds do
   CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
 
   users = [
-    { name: "Dieferson cruz", email: "dieff.cruz@gmail.com", password: to_md5("1234") },
+    { name: "Dieferson Cruz", email: "dieff.cruz@gmail.com", password: to_md5("1234") },
+    { name: "Anderson Silva", email: "spider@gmail.com", password: to_md5("1234") },
+
   ]
 
   MongoDB.new.drop_danger
