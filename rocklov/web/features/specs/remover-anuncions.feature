@@ -20,6 +20,7 @@ Funcionalidade: Remover Anúncios
             E confirmo a exclusão
         Então não devo ver esse anúncio no meu Dashboard
 
+    @desistir_exclusao
     Cenario: Desistir exclusão
 
         Dado que eu tenho o seguinte anúncio indesejado:
@@ -29,4 +30,4 @@ Funcionalidade: Remover Anúncios
             | preco     | 50             |
         Quando eu solicito a exlusão desse anúncio
             Mas não confirmo a exclusão
-        Então devo ver esse anúncio no meu Dashboard
+        Então esse item deve permanecer no meu Dashboard
