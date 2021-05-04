@@ -17,6 +17,6 @@ Funcionalidade: Receber pedido de locação
         Quando "maria@locataria.com" e "1234" solicita a locação desse equipo
         Então devo ver a seguinte mensagem:
             """
-            maira@locataria.com deseja alugar o equipamento: Trompete em: DATA_ATUAL
+            maria@locataria.com deseja alugar o equipamento: Trompete em: DATA_ATUAL
             """
             E devo ver os links: "ACEITAR" e "REJEITAR" no pedido
