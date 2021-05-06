@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Prep'){
         steps {
-                sh 'cd rocklov/api && ls && bundle install'
+                sh 'cd rocklov/api && gem install sqlite3 && bundle install'
             }
         }
         stage('Testing') {
