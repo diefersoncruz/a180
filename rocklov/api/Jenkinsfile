@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Prep'){
         steps {
-                sh 'cd rocklov/api && bundle install  && rspec'
+                sh 'cd rocklov/api && rspec && bundle install'
             }
         }
         stage('Testing') {
