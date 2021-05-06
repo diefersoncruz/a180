@@ -10,7 +10,7 @@ describe "POST /sessions" do
     end
 
     it "valida id do usuário" do
-      expect(@result.parsed_response["_id"].length).to eql 24
+      expect(@result.parsed_response["_id"].length).to eql 25
     end
   end
 
