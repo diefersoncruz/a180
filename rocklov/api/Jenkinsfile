@@ -11,6 +11,7 @@ pipeline {
         steps {
                 sh 'ls'
                 sh 'cd rocklov'
+                sh 'ls'
                 sh 'cd api && bundle install'
             }
         }
@@ -18,6 +19,7 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'cd rocklov'
+                sh 'ls'
                 sh 'cd api && rspec'
             }
         }
