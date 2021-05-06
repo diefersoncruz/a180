@@ -18,8 +18,10 @@ pipeline {
             }
         }
         stage('UAT'){
+            steps{
             echo 'Aguardando testes de aceitação.'
             input message: 'Podemos ir para produção'
+            }
         }
         stage('prod'){
             steps{
