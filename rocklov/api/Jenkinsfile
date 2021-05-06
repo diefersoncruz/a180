@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Prep'){
         steps {
-                sh 'cd rocklov/api && gem install rails && bundle install'
+                sh 'cd rocklov/api && gem install jekyll bundler && bundle install'
             }
         }
         stage('Testing') {
