@@ -1,4 +1,4 @@
-require "Mongo"
+require "mongo"
 
 Mongo::Logger.logger = Logger.new("./logs/mongo.log")
 
